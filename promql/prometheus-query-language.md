@@ -126,10 +126,10 @@ http_request_total{}[1d] offset 1d
 sum(http_request_total)
 
 # 按照mode计算主机CPU的平均使用时间
-avg(node_cpu) by (mode)
+avg(node_cpu_seconds_total) by (mode)
 
 # 按照主机查询各个主机的CPU使用率
-sum(sum(irate(node_cpu{mode!='idle'}[5m]))  / sum(irate(node_cpu[5m]))) by (instance)
+sum(sum(irate(node_cpu_seconds_total{mode!='idle'}[5m]))  / sum(irate(node_cpu_seconds_total[5m]))) by (instance)
 ```
 
 ## 标量和字符串
